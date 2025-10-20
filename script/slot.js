@@ -1,35 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>🎰 Slot Machine</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="game-container">
-    <h1>🎰 Vegas Slot Machine</h1>
-    <p id="balance">Balance: 1000 credits</p>
-    <div class="chip-area">
-      <div class="chip red" data-value="10">10</div>
-      <div class="chip blue" data-value="25">25</div>
-      <div class="chip green" data-value="50">50</div>
-      <div class="chip gold" data-value="100">100</div>
-    </div>
-    <div class="bet-area">Current Bet: <span id="current-bet">0</span></div>
+const symbols = ["🍒","🍋","🔔","💎","7️⃣","🍀","⭐"];
+let balance = 1000, bet = 0;
+const reels=[...document.querySelectorAll(".reel")];
+const result=document.getElementById("result");
+const spinSound=document.getElementById("spinSound");
+const winSound=document.getElementById("winSound");
+const loseSound=document.getElementById("loseSound");
 
-    <div id="slot-container">
-      <div class="reel" id="reel1">🍒</div>
-      <div class="reel" id="reel2">🍋</div>
-      <div class="reel" id="reel3">7️⃣</div>
-    </div>
-
-    <button id="spin">Spin 🎰</button>
-    <p id="result"></p>
-    <button onclick="location.href='index.html'">🏠 Back</button>
-  </div>
-  <audio id="spinSound" src="https://actions.google.com/sounds/v1/ambiences/casino_slot_machine.ogg"></audio>
-  <audio id="winSound" src="https://actions.google.com/sounds/v1/cartoon/cartoon_cowbell.ogg"></audio>
-  <audio id="loseSound" src="https://actions.google.com/sounds/v1/cartoon/cartoon_boing.ogg"></audio>
-  <script src="script/slot.js"></script>
-</body>
-</html>
+document.querySelectorAll(".chip").forEach(chip=>{
+  chip.onclick=()=>{
+    const val=Number(chip.dataset.value);
+    if(balance>=val){bet+=val;balance-=val;update();}
+  };
+});
+function update(){
+  document.getElementById("balance").textContent=`Balance: ${balance} credits`;
+  document.getElementById("current-bet").textContent=bet;
+}
+document.getElementById("spin").onclick=()=>{
+  if(bet<=0){result.textContent="Place a bet!";return;}
+  spin();
+};
+function spin(){
+  spinSound.play();
+  result.textContent="";
+  reels.forEach(r=>r.classList.add("spin"));
+  const out=reels.map(()=>symbols[Math.floor(Math.random()*symbols.length)]);
+  setTimeout(()=>stop(0,out[0]),800);
+  setTimeout(()=>stop(1,out[1]),1200);
+  setTimeout(()=>stop(2,out[2]),1600);
+  setTimeout(()=>resolve(out),2000);
+}
+function stop(i,s){reels[i].classList.remove("spin");reels[i].textContent=s;}
+function resolve(o){
+  const container=document.querySelector(".game-container");
+  const allSame=o.every(s=>s===o[0]), twoSame=new Set(o).size===2;
+  if(allSame){winSound.play();container.classList.add("flash-win");
+    balance+=bet*10;result.textContent=`JACKPOT! Won ${bet*10}!`;
+  }else if(twoSame){winSound.play();container.classList.add("flash-win");
+    balance+=bet*3;result.textContent=`Matched 2! Won ${bet*3}!`;
+  }else{loseSound.play();container.classList.add("flash-loss");
+    result.textContent=`Lost ${bet}.`;
+  }
+  bet=0;update();setTimeout(()=>container.classList.remove("flash-win","flash-loss"),2000);
+}
