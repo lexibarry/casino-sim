@@ -3,21 +3,93 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🎲 Casino Simulator</title>
+  <title>🎰 Casino Simulator</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* BACKGROUND & TEXT */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", Arial, sans-serif;
+      background: radial-gradient(circle at top left, #0a0a0a, #000000);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    /* CONTAINER */
+    .container {
+      text-align: center;
+      animation: fadeIn 1.2s ease-in;
+    }
+
+    /* HEADER GLOW */
+    h1 {
+      color: #ffd700;
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+      text-shadow: 0 0 15px #ffcc00, 0 0 30px #ff6600, 0 0 45px #ffcc00;
+      font-weight: bold;
+    }
+
+    /* SUBTEXT */
+    p {
+      color: #e8e8e8;
+      font-size: 1.2rem;
+      margin-bottom: 25px;
+    }
+
+    /* BUTTON LAYOUT */
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    /* BUTTON STYLE */
+    button {
+      background: #ffd700;
+      color: black;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      padding: 12px 22px;
+      cursor: pointer;
+      font-size: 1rem;
+      box-shadow: 0 0 10px gold, 0 0 20px #ffcc00;
+      transition: all 0.25s ease;
+    }
+
+    button:hover {
+      background: #ffcc00;
+      transform: scale(1.07);
+      box-shadow: 0 0 15px 5px gold;
+    }
+
+    /* ANIMATION */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
+
 <body>
   <div class="container">
     <h1>🎰 Casino Simulator</h1>
     <p>Choose your game:</p>
- <div class="button-row">
-  <button onclick="location.href='slot.html'">🎰 Slot Machine</button>
-  <button onclick="location.href='blackjack.html'">🃏 Blackjack</button>
-  <button onclick="location.href='poker.html'">♠️ Texas Hold’em</button>
-  <button onclick="location.href='roulette.html'">🎡 Roulette</button>
-  <button onclick="location.href='craps.html'">🎲 Craps</button>
-  <button onclick="location.href='horse.html'">🏇 Horse Racing</button>
-</div>
+
+    <div class="button-row">
+      <button onclick="location.href='slot.html'">🎰 Slot Machine</button>
+      <button onclick="location.href='blackjack.html'">🃏 Blackjack</button>
+      <button onclick="location.href='poker.html'">♠️ Texas Hold’em</button>
+      <button onclick="location.href='roulette.html'">🎡 Roulette</button>
+      <button onclick="location.href='craps.html'">🎲 Craps</button>
+      <button onclick="location.href='horse.html'">🏇 Horse Racing</button>
+    </div>
   </div>
 </body>
 </html>
