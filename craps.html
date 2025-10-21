@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🎲 Craps</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="game-container">
+    <h1>🎲 Craps</h1>
+    <p id="balance">Balance: 1000 credits</p>
+
+    <div class="chip-area">
+      <div class="chip red" data-value="10">10</div>
+      <div class="chip blue" data-value="25">25</div>
+      <div class="chip green" data-value="50">50</div>
+      <div class="chip gold" data-value="100">100</div>
+    </div>
+    <div class="bet-area">Current Bet: <span id="current-bet">0</span></div>
+
+    <div id="dice-area">
+      <div class="die" id="die1">🎲</div>
+      <div class="die" id="die2">🎲</div>
+    </div>
+
+    <button id="roll">Roll Dice 🎲</button>
+    <p id="result"></p>
+    <button onclick="location.href='index.html'">🏠 Back</button>
+  </div>
+
+  <script src="script/craps.js"></script>
+</body>
+</html>
