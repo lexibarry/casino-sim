@@ -76,3 +76,20 @@ h1 {
   margin: 20px auto;
   transition: transform 3s ease-out;
 }
+#dice-area {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-size: 4rem;
+  margin: 20px;
+}
+.die {
+  width: 80px; height: 80px; border: 3px solid gold; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  background: #222; transition: transform 0.3s;
+}
+.roll-anim { animation: rollDice 0.8s linear infinite; }
+@keyframes rollDice {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
