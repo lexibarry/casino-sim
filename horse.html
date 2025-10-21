@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🏇 Horse Racing</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="game-container">
+    <h1>🏇 Horse Racing</h1>
+    <p id="balance">Balance: 1000 credits</p>
+
+    <div class="chip-area">
+      <div class="chip red" data-value="10">10</div>
+      <div class="chip blue" data-value="25">25</div>
+      <div class="chip green" data-value="50">50</div>
+      <div class="chip gold" data-value="100">100</div>
+    </div>
+    <div class="bet-area">Current Bet: <span id="current-bet">0</span></div>
+
+    <label for="horse">Choose a horse:</label>
+    <select id="horse">
+      <option value="1">Horse 1</option>
+      <option value="2">Horse 2</option>
+      <option value="3">Horse 3</option>
+      <option value="4">Horse 4</option>
+    </select>
+
+    <div id="track">
+      <div class="lane" id="lane1">🐎 1</div>
+      <div class="lane" id="lane2">🐎 2</div>
+      <div class="lane" id="lane3">🐎 3</div>
+      <div class="lane" id="lane4">🐎 4</div>
+    </div>
+
+    <button id="race">Start Race 🏁</button>
+    <p id="result"></p>
+    <button onclick="location.href='index.html'">🏠 Back</button>
+  </div>
+
+  <script src="script/horse.js"></script>
+</body>
+</html>
